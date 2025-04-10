@@ -14,7 +14,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|unique:users',
             'password' => 'required',
         ]);
 
@@ -53,8 +53,8 @@ class AuthController extends Controller
     //     return response()->json(['message' => 'Deconnexion reussie']);
     // }
 
-    //     public function user(Request $request)
-    // {
-    //     return response()->json($request->user());
-    // }
+        public function user(Request $request)
+    {
+        return response()->json($request->user());
+    }
 }
