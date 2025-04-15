@@ -46,12 +46,15 @@ class AuthController extends Controller
     }
 
     // Méthode pour la déconnexion
-    // public function logout(Request $request)
-    // {
-    //     $request->user()->currentAccessToken()->delete();
+    public function logout(Request $request)
+{
+    // Supprime tous les tokens de l'utilisateur connecté
+    $request->user()->tokens()->delete();
 
-    //     return response()->json(['message' => 'Deconnexion reussie']);
-    // }
+    return response()->json([
+        'message' => 'Déconnexion réussie.',
+    ]);
+}
 
         public function user(Request $request)
     {

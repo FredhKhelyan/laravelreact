@@ -7,6 +7,8 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./pages/PrivateRoute";
+import TaskList from './components/TaskList';
+import { Toaster } from 'sonner';
 
 function App() {
 
@@ -15,15 +17,17 @@ return (
     <>
         <Router>
             <Routes>
-                <Route path="/" element={<Register />} />
+                <Route path="/" element={<Login />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/dashboard" element={
                     <PrivateRoute>
-                        <Dashboard />
+                       <Dashboard />
+                        {/* <Toaster position="top-right" richColors /> */}
                     </PrivateRoute>
                 } />
-                <Route path="*" element={<Register />} />
+                <Route path="*" element={<Login />} />
+                <Route path="/tasks" element={<TaskList />} />
             </Routes>
         </Router>
 
